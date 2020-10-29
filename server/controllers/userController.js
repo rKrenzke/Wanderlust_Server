@@ -1,8 +1,9 @@
+require('dotenv').config();
 let express = require('express');
 let router = express.Router();
 let sequelize = require('../db');
 let User = require('../models/user')(sequelize, require("sequelize"));
-let bcrypt = require('bcryptjs');
+let bcrypt = require('bcrypt');
 let jwt = require('jsonwebtoken');
 
 //User Endpoints

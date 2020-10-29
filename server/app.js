@@ -19,4 +19,8 @@ app.use(express.json());
 app.use(require('./middlewares/cors'));
 
 app.use('/user', user);
-app.use('/trip', trip);
+app.use('/trips', trip);
+
+app.listen(4000, function(){
+    console.log('App is listening on 4000')
+});
