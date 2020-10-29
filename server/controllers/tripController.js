@@ -10,10 +10,10 @@ let validateSession = require('../middlewares/validate-session');
 //POST new trip
 router.post('/new', validateSession, function(request, response){
     let user_id = request.user.id;
-    let location = request.body;
-    let description = request.body;
-    let sites = request.body;
-    let rating = request.body;
+    let location = request.body.trip.location;
+    let description = request.body.trip.description;
+    let sites = request.body.trip.sites;
+    let rating = request.body.trip.rating;
 
     Trip
     .create({
@@ -55,7 +55,7 @@ router.get('/all', validateSession, function(request, response){
 //PUT new rating for existing trip
 router.put('/:id', function(request, response){
     let data = request.params.id;;
-    let rating = request.body;
+    let rating = request.body.trip.rating;
 
     Trip
     .update({

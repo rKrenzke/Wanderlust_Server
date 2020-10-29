@@ -21,6 +21,6 @@ app.use(require('./middlewares/cors'));
 app.use('/user', user);
 app.use('/trips', trip);
 
-app.listen(4000, function(){
-    console.log('App is listening on 4000')
+app.listen(process.env.PORT, function(){
+    console.log(`Server is listening on ${process.env.PORT}`)
 });
