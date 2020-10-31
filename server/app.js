@@ -15,8 +15,16 @@ sequelize.authenticate().then(async () => {
     console.log('NO DATABASE CONNECTION')
 })
 
+// allows client to make calls to api server
+const cors = require("cors");
+app.use(cors())
+
 app.use(express.json());
 app.use(require('./middlewares/cors'));
 
 app.use('/user', user);
-app.use('/trip', trip);
+app.use('/trips', trip);
+
+app.listen(process.env.PORT, function(){
+    console.log(`Server is listening on ${process.env.PORT}`)
+});
