@@ -80,11 +80,11 @@ router.post("/login", function (request, response) {
               sessionToken: token,
             });
           } else {
-            response.send(502).send({ error: "Bad Gateway" });
+            response.status(400).send({ error: "User not found or invalid credentials" });
           }
         });
       } else {
-        response.status(500).send({ error: "Internal Server Error" });
+        response.status(400).send({ error: "User not found or invalid credentials" });
       }
     },
     function (err) {
