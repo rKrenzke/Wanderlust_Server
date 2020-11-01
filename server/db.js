@@ -8,11 +8,3 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 //create combined postgres/Heroku server
 
 module.exports = sequelize;
-
-
-
-
-
-
-
-

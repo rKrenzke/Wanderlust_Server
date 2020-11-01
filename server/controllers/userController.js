@@ -43,7 +43,7 @@ router.post("/register", function (request, response) {
         passwordhash: bcrypt.hashSync(password, 10),
       }).then((user) => {
         // generate a session token using the newly created user object
-        const token = Session.generateToken(user);
+        let token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24});
 
         // respond to the request with the following info
         response.status(200).send({
