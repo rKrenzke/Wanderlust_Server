@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./node_modules/http-server/bin/http-server",
+    "start": "node app.js",
+    "start1": "node ./node_modules/http-server/bin/http-server",
     "dev": "nodemon app.js"
   },
   "author": "",
