@@ -12,7 +12,7 @@ let jwt = require("jsonwebtoken");
 router.post("/register", function (request, response) {
   // we wrap our code in a try/catch incase the request doesn't contain a user object
   try {
-    const { username, emnail, password } = request.body.user;
+    const { username, email, password } = request.body.user;
 
     //user did not provide their username and password
     if (!username || !password) {
@@ -40,7 +40,7 @@ router.post("/register", function (request, response) {
       // if username doesn't exist create user
       User.create({
         username: username,
-        passwordhash: bcrypt.hashSync(password, 10),
+        password: bcrypt.hashSync(password, 10),
       }).then((user) => {
         // generate a session token using the newly created user object
         let token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24});
