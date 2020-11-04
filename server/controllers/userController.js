@@ -13,7 +13,6 @@ router.post("/register", function (request, response) {
   // we wrap our code in a try/catch incase the request doesn't contain a user object
   try {
     const { username, email, password } = request.body.user;
-
     //user did not provide their username and password
     if (!username || !password) {
       response.status(400).send("Provide username and password");
@@ -41,6 +40,7 @@ router.post("/register", function (request, response) {
       User.create({
         username: username,
         password: bcrypt.hashSync(password, 10),
+        email: email
       }).then((user) => {
         // generate a session token using the newly created user object
         let token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24});
